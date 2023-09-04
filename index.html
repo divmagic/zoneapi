@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Test dijit programmatic layout</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <style type="text/css">
+         @import "dojo/resources/dojo.css";
+         @import "dijit/themes/claro/document.css";
+         @import "dijit/themes/claro/claro.css";
+         @import "dgrid/css/dgrid.css";
+         @import "dgrid/css/skins/claro.css";
+         html, body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow:hidden;
+         }
+         .dijitBorderContainer .dgrid {
+            height: 100%;
+         }
+      </style>
+      <script type="text/javascript">
+         var dojoConfig = {
+            async : true,
+            parseOnLoad : true
+         }
+      </script>
+      <script type="text/javascript" src="dojo/dojo.js"></script>
+      <script type="text/javascript">
+         require(["dojo/ready", "dojo/parser", "dojo/dom-construct", "test/TopBC"], function(ready, parser, domConstruct, BC){
+            ready(function(){
+               var pBC = new BC({}, "bc");
+               pBC.startup();
+            });
+         });
+      </script>
+   </head>
+   <body class="claro">
+      <div id="bc"></div>
+   </body>
+</html>
+testDgrid.js
+define(
+   [
+      'dojo/_base/declare',
+      'dgrid/OnDemandGrid',
+      'dojo/html',
+      'dgrid/Selection',
+			'dgrid/extensions/DijitRegistry'
+   ],
+   function(declare, GridBase, html, DgridSelection, DijitRegistry)
+   {
+      var pGrid = declare([GridBase, DgridSelection, DijitRegistry],
+      {
+         columns:
+         {
+            name: {
+               field: 'Name',
+               label: 'Name',
+               renderCell: function(item, value, node, options)
+               {
+                  value = item.Name;
+                  html.set(node, value);
+                  return value;
+               }
+            },
+            value: {
+               field: '_Value',
+               label: 'Simple Value',
+            },
+            namespaceName: {
+               field: 'NamespaceName',
+               label: 'Namespace Name',
+            },
+            type: {
+               field: 'Type',
+               label: 'Type',
+            }
+         },
+         constructor:function (args)
+         {
+            // Call Super
+            dojo.safeMixin(this, args);
+         },
+         postCreate:function (args)
+         {
+            this.inherited(arguments);
+
+            this.renderArray([
+               {Name: "test row 1", _Value: "under value", NamespaceName: "nsn", Type: "test row"},
+               {Name: "test row 2", _Value: "under value", NamespaceName: "nsn", Type: "test row"},
+               {Name: "test row 3", _Value: "under value", NamespaceName: "nsn", Type: "test row"},
+               {Name: "test row 4", _Value: "under value", NamespaceName: "nsn", Type: "test row"},
+               {Name: "test row 5", _Value: "under value", NamespaceName: "nsn", Type: "test row"},
+               {Name: "test row 6", _Value: "under value", NamespaceName: "nsn", Type: "test row"},
+               {Name: "test row 7", _Value: "under value", NamespaceName: "nsn", Type: "test row"}
+            ]);
+
+            this.on("dgrid-select", dojo.hitch(this, function(event){
+               // get the rows that were just selected
+               var rows = event.rows;
+               for(var row in rows)
+               {
+                  console.log(rows[row].data);
+               }
+
+            }));
+
+            this.on(".dgrid-row:contextmenu", dojo.hitch(this, function(evt){
+               evt.preventDefault(); // prevent default browser context menu 
+               // create or popup a menu here 
+               console.log(this.row(evt).data);
+            })); 
+
+         }
+      });
+      return pGrid;
+   }
+);
