@@ -1,3 +1,20 @@
+# v0.0.3 (Thu Sep 14 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Added deploy.yml file ([@divmagic](https://github.com/divmagic))
+- Added release.yml file ([@divmagic](https://github.com/divmagic))
+- Added deploy.sh file ([@divmagic](https://github.com/divmagic))
+- Added .autorc file ([@divmagic](https://github.com/divmagic))
+- Added amber.yaml secrets file ([@divmagic](https://github.com/divmagic))
+- Added flask quickstart ([@divmagic](https://github.com/divmagic))
+
+#### Authors: 1
+
+- [@divmagic](https://github.com/divmagic)
+
+---
+
 # v0.0.2 (Thu Sep 14 2023)
 
 #### ⚠️ Pushed to `main`
