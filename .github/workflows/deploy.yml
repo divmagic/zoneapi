@@ -15,7 +15,7 @@ jobs:
       RUNNING_WITHIN_CI_PIPELINE: 1
       GIT_USERNAME_OR_ORG: divmagic
       GIT_REPO_NAME: zoneapi
-      APP_NAME: container-e5fwtqs
+      APP_NAME: container-a-hw8vi
       SSH_CONFIG_FILE: /dev/null
       AMBER_SECRET: ${{ secrets.AMBER_SECRET }}
       DOKKU_SSH_PRIVATE_KEY: ${{ secrets.DOKKU_SSH_PRIVATE_KEY}}
