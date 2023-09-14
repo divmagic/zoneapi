@@ -1,3 +1,15 @@
+# v0.0.2 (Thu Sep 14 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Update index.html ([@divmagic](https://github.com/divmagic))
+
+#### Authors: 1
+
+- [@divmagic](https://github.com/divmagic)
+
+---
+
 # v0.0.1 (Thu Sep 14 2023)
 
 :tada: This release contains work from a new contributor! :tada:
